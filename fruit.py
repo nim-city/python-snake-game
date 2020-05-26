@@ -22,9 +22,9 @@ class Fruit(GameObject):
 
         # # Handle actual checking and random generation
         locations = (
-            (50,50),
-            (430,50),
-            (430,430),
-            (50,430))
+            (60,60),
+            (440,60),
+            (440,440),
+            (60,440))
         rand_index = randint(0,3)
         self.x_pos, self.y_pos = locations[rand_index]

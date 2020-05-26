@@ -46,21 +46,24 @@ def main():
             elif event.type == pygame.KEYDOWN:
                 if not is_game_over:
                     if event.key == pygame.K_LEFT:
-                        x_change = -jump
-                        y_change = 0
+                        if x_change == 0:
+                            x_change = -jump
+                            y_change = 0
                     elif event.key == pygame.K_RIGHT:
-                        x_change = jump
-                        y_change = 0
+                        if x_change == 0:
+                            x_change = jump
+                            y_change = 0
                     elif event.key == pygame.K_DOWN:
-                        y_change = jump
-                        x_change = 0
+                        if y_change == 0:
+                            y_change = jump
+                            x_change = 0
                     elif event.key == pygame.K_UP:
-                        y_change = -jump
-                        x_change = 0
+                        if y_change == 0:
+                            y_change = -jump
+                            x_change = 0
                 else:
                     if event.key == pygame.K_SPACE:
                         score = 0
-                        jump = 10
                         is_game_over = False
                         x_change = 0
                         y_change = 0
@@ -77,7 +80,7 @@ def main():
             should_generate_new_fruit = False
 
         # Check for collisions
-        if snake.check_if_collided_with_edges(screen):
+        if snake.check_if_collided_with_edges(screen) or snake.check_if_collided_with_self():
             is_game_over = True
         elif snake.check_if_collected_fruit(fruit):
             score += 1

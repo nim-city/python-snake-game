@@ -17,3 +17,4 @@ class GameObject:
 
     def draw(self, pygame, screen):
         pygame.draw.rect(screen, self.colour, (self.x_pos, self.y_pos, self.width, self.height), 0)
+        pygame.draw.rect(screen, (255,255,255), (self.x_pos, self.y_pos, self.width, self.height), 1)

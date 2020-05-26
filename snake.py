@@ -11,7 +11,7 @@ class Snake:
         width, height = screen.get_size()
         x_pos = (width / 2) - (block_length / 2)
         y_pos = (height / 2) - (block_length / 2)
-        self.blocks.append(SnakeBlock(x_pos, y_pos, block_length))
+        self.blocks.append(SnakeBlock(x_pos, y_pos, block_length, (0,255,0)))
         self.num_blocks = 1
 
 
@@ -24,6 +24,15 @@ class Snake:
     def check_if_collided_with_edges(self, screen):
         max_x, max_y = self.blocks[0].get_max_x_and_y()
         return self.blocks[0].x_pos < 0 or max_x > screen.get_width() or self.blocks[0].y_pos < 0 or max_y > screen.get_height()
+
+
+    def check_if_collided_with_self(self):
+        for i in range(3, self.num_blocks):
+            current_block = self.blocks[i]
+            snake_max_x, snake_max_y = self.blocks[0].get_max_x_and_y()
+            block_max_x, block_max_y = current_block.get_max_x_and_y()
+            if self.blocks[0].x_pos < block_max_x and snake_max_x > current_block.x_pos and self.blocks[0].y_pos < block_max_y and snake_max_y > current_block.y_pos:
+                return True
 
 
     def check_if_collected_fruit(self, fruit):

@@ -4,8 +4,8 @@ from gameObject import GameObject
 class SnakeBlock(GameObject):
 
 
-    def __init__(self, x_pos, y_pos, length):
-        super().__init__(x_pos, y_pos, length, length, (0,0,255))
+    def __init__(self, x_pos, y_pos, length, colour=(0,0,255)):
+        super().__init__(x_pos, y_pos, length, length, colour)
         self.blocks = []
         self.next_block = None
 
