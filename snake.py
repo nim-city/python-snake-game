@@ -21,9 +21,9 @@ class Snake:
         self.blocks[0].update_pos_to(x_pos, y_pos)
 
 
-    def check_if_collided_with_edges(self, screen):
+    def check_if_collided_with_edges(self, width, height):
         max_x, max_y = self.blocks[0].get_max_x_and_y()
-        return self.blocks[0].x_pos < 0 or max_x > screen.get_width() or self.blocks[0].y_pos < 0 or max_y > screen.get_height()
+        return self.blocks[0].x_pos < 0 or max_x > width or self.blocks[0].y_pos < 0 or max_y > height
 
 
     def check_if_collided_with_self(self):
